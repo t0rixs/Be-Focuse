@@ -1,73 +1,105 @@
-# React + TypeScript + Vite
+# Be Focus
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+集中力を高めるためのシンプルなフォーカスタイマーアプリケーションです。黒を基調とした落ち着いたデザインで、作業に集中できる環境を提供します。
 
-Currently, two official plugins are available:
+## ✨ 主な機能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **フォーカスタイマー**: 作業時間を正確に計測
+- **自動停止機能**: ブラウザがフォーカスを失うと自動的にタイマーが停止
+- **現在時刻表示**: 画面上部に常に現在時刻を表示
+- **セッション記録**: フォーカス開始時刻と現在時刻を表示
+- **シンプルなUI**: 電源ボタン一つで簡単に操作可能
 
-## React Compiler
+## 🚀 使い方
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. フォーカスを開始する
 
-## Expanding the ESLint configuration
+画面中央の電源ボタンをクリックして、フォーカスモードを開始します。ボタンが青く光り、タイマーがカウントを開始します。
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2. フォーカス中
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- タイマーが経過時間を表示します（HH:MM:SS形式）
+- 画面上部に開始時刻と現在時刻が表示されます
+- ブラウザのタブを切り替えたり、他のアプリに切り替えると自動的に停止します
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 3. セッション完了
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+フォーカスを停止すると、セッション完了モーダルが表示され、今回のフォーカス時間が表示されます。
+
+## 🛠️ セットアップ
+
+### 必要な環境
+
+- Node.js 18以上
+- npm または yarn
+
+### インストール
+
+```bash
+# 依存関係をインストール
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 開発サーバーの起動
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# 開発モードで起動
+npm run dev
 ```
+
+ブラウザで `http://localhost:5173` にアクセスしてアプリを確認できます。
+
+### ビルド
+
+```bash
+# 本番用ビルド
+npm run build
+```
+
+ビルドされたファイルは `dist` フォルダに生成されます。
+
+### プレビュー
+
+```bash
+# ビルド結果をプレビュー
+npm run preview
+```
+
+## 📦 デプロイ
+
+### GitHub Pagesへのデプロイ
+
+```bash
+# デプロイを実行
+npm run deploy
+```
+
+初回デプロイ時は、GitHubリポジトリの Settings → Pages で以下を設定してください：
+
+1. Source を "Deploy from a branch" に設定
+2. Branch を `gh-pages`、フォルダを `/ (root)` に設定
+
+## 🎨 デザイン
+
+- **カラーテーマ**: 黒を基調とした落ち着いたデザイン
+- **電源ボタン**: 円形の電源ボタンで、ON/OFF状態を視覚的に表示
+- **タイポグラフィ**: 読みやすいフォントと適切な文字間隔
+
+## 📝 技術スタック
+
+- **React 19**: UIライブラリ
+- **TypeScript**: 型安全性
+- **Vite**: 高速なビルドツール
+- **CSS3**: モダンなスタイリング
+
+## 📄 ライセンス
+
+このプロジェクトはMITライセンスの下で公開されています。
+
+## 🤝 コントリビューション
+
+バグ報告や機能要望は、GitHubのIssuesでお知らせください。
+
+---
+
+**Be Focus** で、より集中力の高い作業時間を実現しましょう！

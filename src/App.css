@@ -16,7 +16,7 @@
 /* 現在時刻表示 */
 .current-time-display {
   position: absolute;
-  bottom: 2rem;
+  top: 2rem;
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.2rem;
@@ -151,7 +151,7 @@
 }
 
 .time-text {
-  font-size: 4rem;
+  font-size: 2rem;
   font-weight: 300;
   color: #e0e0e0;
   letter-spacing: 0.1em;
@@ -161,8 +161,7 @@
 }
 
 .content-wrapper.focused .time-text {
-  color: #4a9eff;
-  text-shadow: 0 2px 8px rgba(74, 158, 255, 0.3);
+  color: #666;
 }
 
 .welcome-text {
@@ -249,7 +248,7 @@
 .modal-time {
   font-size: 2rem;
   font-weight: 300;
-  color: #4a9eff;
+  color: #ffffff;
   margin: 0 0 2rem 0;
   letter-spacing: 0.1em;
   font-variant-numeric: tabular-nums;
@@ -311,4 +310,14 @@
   .modal-time {
     font-size: 1.5rem;
   }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  color: #282828;
+  z-index: 10;
 }

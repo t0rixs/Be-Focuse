@@ -94,6 +94,9 @@ function App() {
           </div>
         </div>
       </div>
+      <div className="footer">
+        <p>Copyright © 宮野柊太. 2026 All rights reserved.</p>
+      </div>
       {!isFirst && !isFocused && (
         <div className="modal-overlay">
           <div className="modal-content">

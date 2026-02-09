@@ -1,0 +1,314 @@
+/* メインコンテナ */
+.main-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  z-index: 1;
+}
+
+/* 現在時刻表示 */
+.current-time-display {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #666;
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+  z-index: 10;
+}
+
+.content-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 電源ボタン */
+.power-button {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #2a2a2a;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.05);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.power-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.power-button:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.power-button:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  border-color: #3a3a3a;
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.08);
+}
+
+.power-button:active {
+  transform: translate(-50%, -50%) scale(0.98);
+}
+
+/* 電源ON状態 */
+.power-button.power-on {
+  border-color: #4a9eff;
+  background: linear-gradient(135deg, #1a3a5a 0%, #0f1f2f 100%);
+  box-shadow:
+    0 8px 16px rgba(74, 158, 255, 0.3),
+    inset 0 2px 4px rgba(74, 158, 255, 0.1),
+    0 0 20px rgba(74, 158, 255, 0.2);
+}
+
+.power-button.power-on:hover {
+  border-color: #5aaeff;
+  box-shadow:
+    0 12px 24px rgba(74, 158, 255, 0.4),
+    inset 0 2px 4px rgba(74, 158, 255, 0.15),
+    0 0 30px rgba(74, 158, 255, 0.3);
+}
+
+/* 電源OFF状態 */
+.power-button.power-off {
+  border-color: #2a2a2a;
+}
+
+.power-button-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.power-icon {
+  width: 50px;
+  height: 50px;
+  color: #e0e0e0;
+  transition: color 0.3s ease;
+}
+
+.power-button.power-on .power-icon {
+  color: #4a9eff;
+}
+
+.power-button:hover .power-icon {
+  color: #ffffff;
+}
+
+/* タイマー表示 */
+.timer-display {
+  position: absolute;
+  top: calc(50% + 100px);
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-text {
+  font-size: 4rem;
+  font-weight: 300;
+  color: #e0e0e0;
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease;
+}
+
+.content-wrapper.focused .time-text {
+  color: #4a9eff;
+  text-shadow: 0 2px 8px rgba(74, 158, 255, 0.3);
+}
+
+.welcome-text {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #666;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* モーダル */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 2;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 3rem 4rem;
+  text-align: center;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.05);
+  animation: slideUp 0.3s ease;
+  max-width: 400px;
+  width: 90%;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-title {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #e0e0e0;
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.1em;
+}
+
+.modal-time {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #4a9eff;
+  margin: 0 0 2rem 0;
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+}
+
+.restart-button {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border: 1px solid #3a3a3a;
+  color: #e0e0e0;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+}
+
+.restart-button:hover {
+  background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+  border-color: #4a4a4a;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.restart-button:active {
+  transform: translateY(0);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .power-button {
+    width: 100px;
+    height: 100px;
+  }
+
+  .power-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .time-text {
+    font-size: 3rem;
+  }
+
+  .welcome-text {
+    font-size: 1.2rem;
+  }
+
+  .modal-content {
+    padding: 2rem 2.5rem;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-time {
+    font-size: 1.5rem;
+  }
+}

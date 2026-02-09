@@ -8,7 +8,6 @@ function App() {
   const [isFirst, setIsFirst] = useState(true)
   const [currentTime, setCurrentTime] = useState(new Date())
   const [startTime, setStartTime] = useState<Date | null>(null)
-  const [endTime, setEndTime] = useState<Date | null>(null)
 
   const formatTime = (time: number) => {
     const hours = Math.floor(time / 3600)
@@ -38,7 +37,6 @@ function App() {
   useEffect(() => {
     if (isFocused) {
       window.addEventListener("blur", () => {
-        setEndTime(currentTime)
         setIsFocused(false)
       });
       setStartTime(currentTime)
@@ -108,7 +106,6 @@ function App() {
                 setIsFirst(true)
                 setCount(0)
                 setStartTime(null)
-                setEndTime(null)
               }}
             >
               Restart
